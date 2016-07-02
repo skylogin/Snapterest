@@ -1,0 +1,4 @@
+npm_modules/
+*.log
+*.config
+/build/snapterest.js
