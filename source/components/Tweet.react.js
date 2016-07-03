@@ -3,13 +3,14 @@ var React = require('react');
 var tweetStyle = {
 	position: 'relative',
 	display: 'inline-block',
-	width: '300px',
-	height: '400px',
+	width: '200px',
+	height: '300px',
 	margin: '10px'
 };
 
 var imageStyle = {
-	maxHeight: '400px',
+	width: '200px',
+	maxHeight: '300px',
 	boxShadow: '0px 1px 1px 0px #aaa',
 	border: '1px solid #fff'
 };
@@ -46,9 +47,7 @@ var Tweet = React.createClass({
 
 		return(
 			<div style={tweetStyle}>
-				<img src={tweetMediaUrl} onClick={this.handleImageClick}
-					style={imageStyle}
-				/>
+				<img src={tweetMediaUrl} onClick={this.handleImageClick} style={imageStyle} />
 			</div>
 		);
 	}

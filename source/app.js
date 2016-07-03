@@ -1,10 +1,8 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Application } from './components/Application.react';
+var React = require('react');
+var ReactDOM = require('react-dom');
+var Application = require('./components/Application.react');
 
 ReactDOM.render(<Application />, document.getElementById('react-application'));
-
-
 
 
 /*

@@ -1,7 +1,7 @@
 var React = require('react');
 
 var headerStyle = {
-	fontSize: '16px',
+	fontSize: '14px',
 	fontWeight: '300',
 	display: 'inline-block',
 	margin: '20px 10px'
@@ -16,7 +16,7 @@ var Header = React.createClass({
 
 	render: function(){
 		return(
-			<h2 style={headerStyle}>
+			<h2 styles={headerStyle}>
 				{this.props.text}
 			</h2>
 		);

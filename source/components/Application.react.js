@@ -1,7 +1,6 @@
-import React from 'react';
-
-import { Stream } from './Stream.react';
-import { Collection } from './Collection.react';
+var React = require('react');
+var Stream = require('./Stream.react');
+var Collection = require('./Collection.react');
 
 var Application = React.createClass({
 	getInitialState: function(){
