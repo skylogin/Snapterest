@@ -1,4 +1,4 @@
-var React = require('react');
+import React from 'react';
 
 var tweetStyle = {
 	position: 'relative',
@@ -15,33 +15,19 @@ var imageStyle = {
 	border: '1px solid #fff'
 };
 
-var Tweet = React.createClass({
-	propTypes: {
-		tweet: function(properties, propertyName, componentName){
-			var tweet = properties[propertyName];
 
-			if(!tweet){
-				return new Error('Tweet must be set.');
-			}
 
-			if(!tweet.media){
-				return new Error('Tweet must have an image.');
-			}
-		},
-
-		onImageClick: React.PropTypes.func
-	},
-
-	handleImageClick: function(){
+class Tweet extends React.Component{
+	handleImageClick(){
 		var tweet = this.props.tweet;
 		var onImageClick = this.props.onImageClick;
 
 		if(onImageClick){
 			onImageClick(tweet);
 		}
-	},
+	}
 
-	render: function(){
+	render(){
 		var tweet = this.props.tweet;
 		var tweetMediaUrl = tweet.media[0].url;
 
@@ -51,6 +37,24 @@ var Tweet = React.createClass({
 			</div>
 		);
 	}
-});
 
-module.exports = Tweet;
+}
+
+Tweet.propTypes = {
+	tweet(properties, propertyName, componentName){
+		var tweet = properties[propertyName];
+
+		if(!tweet){
+			return new Error('Tweet must be set.');
+		}
+
+		if(!tweet.media){
+			return new Error('Tweet must have an image.');
+		}
+	},
+
+	onImageClick: React.PropTypes.func
+};
+
+
+export default Tweet;

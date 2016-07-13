@@ -1,30 +1,32 @@
-var React = require('react');
-var SnapkiteStreamClient = require('snapkite-stream-client');
-var StreamTweet = require('./StreamTweet.react');
-var Header = require('./Header.react');
+import React from 'react';
+import SnapkiteStreamClient from 'snapkite-stream-client';
+import StreamTweet from './StreamTweet.react';
+import Header from './Header.react';
 
-var Stream = React.createClass({
-	getInitialState: function(){
-		return{
+
+class Stream extends React.Component{
+	constructor(){
+		super();
+		this.state = {
 			tweet: null
 		};
-	},
+	}
 
-	componentDidMount: function(){
+	componentDidMount(){
 		SnapkiteStreamClient.initializeStream(this.handleNewTweet);
-	},
+	}
 
-	componentWillUnmount: function(){
+	componentWillUnmount(){
 		SnapkiteStreamClient.destroyStream();
-	},
+	}
 
-	handleNewTweet: function(tweet){
+	handleNewTweet(tweet){
 		this.setState({
 			tweet: tweet
 		});
-	},
+	}
 
-	render: function(){
+	render(){
 		var tweet = this.state.tweet;
 		if(tweet){
 			return (
@@ -38,16 +40,7 @@ var Stream = React.createClass({
 			<Header text="Waiting for public photo from Twitter...." />
 		);
 	}
-});
-
-module.exports = Stream;
-/*
-class Stream extends React.component{
-	
-	render(){
-		return <div className="aa">aaa</div>;
-	}
 }
 
+
 export default Stream;
-*/

@@ -1,18 +1,19 @@
-var React = require('react');
-var Header = require('./Header.react');
-var Button = require('./Button.react');
-var CollectionRenameForm = require('./CollectionRenameForm.react');
-var CollectionExportForm = require('./CollectionExportForm.react');
+import React from 'react';
+import Header from './Header.react';
+import Button from './Button.react';
+import CollectionRenameForm from './CollectionRenameForm.react';
+import CollectionExportForm from './CollectionExportForm.react';
 
-var CollectionControls = React.createClass({
-	getInitialState: function(){
-		return{
+class CollectionControls extends React.Component{
+	constructor(){
+		super();
+		this.state = {
 			name: 'new',
 			isEditingName: false
 		};
-	},
+	}
 
-	getHeaderText: function(){
+	getHeaderText(){
 		var numberOfTweetsInCollection = this.props.numberOfTweetsInCollection;
 		var text = numberOfTweetsInCollection;
 
@@ -27,22 +28,23 @@ var CollectionControls = React.createClass({
 				{text} <strong>{this.state.name}</strong> collection
 			</span>
 		);
-	},
+	}
 
-	toggleEditCollectionName: function(){
+	toggleEditCollectionName(){
 		this.setState({
 			isEditingName: !this.state.isEditingName
 		});
-	},
+	}
 
-	setCollectionName: function(name){
+	setCollectionName(){
 		this.setState({
 			name: name,
 			isEditingName: false
 		});
-	},
+	}
 
-	render: function(){
+
+	render(){
 		if(this.state.isEditingName){
 			return(
 				<CollectionRenameForm name={this.state.name}
@@ -68,6 +70,8 @@ var CollectionControls = React.createClass({
 			</div>
 		);
 	}
-});
 
-module.exports = CollectionControls;
+}
+
+
+export default CollectionControls;

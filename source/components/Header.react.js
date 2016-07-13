@@ -1,4 +1,4 @@
-var React = require('react');
+import React from 'react';
 
 var headerStyle = {
 	fontSize: '14px',
@@ -7,20 +7,20 @@ var headerStyle = {
 	margin: '20px 10px'
 };
 
-var Header = React.createClass({
-	getDefaultProps: function(){
-		return{
-			text: 'Default header'
-		};
-	},
+class Header extends React.Component{
 
-	render: function(){
+	render(){
 		return(
 			<h2 styles={headerStyle}>
 				{this.props.text}
 			</h2>
 		);
 	}
-});
+}
 
-module.exports = Header;
+Header.defaultProps = {
+	text: 'Default header'
+}
+
+
+export default Header;

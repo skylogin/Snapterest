@@ -1,11 +1,11 @@
-var React = require('react');
-var ReactDOMServer = require('react-dom/server');
-var CollectionControls = require('./CollectionControls.react');
-var TweetList = require('./TweetList.react');
-var Header = require('./Header.react');
+import React from 'react';
+import ReactDOMServer from 'react-dom/server';
+import CollectionControls from './CollectionControls.react';
+import TweetList from './TweetList.react';
+import Header from './Header.react';
 
-var Collection = React.createClass({
-	createHtmlMarkupStringOfTweetList: function(){
+class Collection extends React.Component{
+	createHtmlMarkupStringOfTweetList(){
 		var htmlString = ReactDOMServer.renderToStaticMarkup(
 			<TweetList tweets={this.props.tweets} />
 		);
@@ -15,17 +15,17 @@ var Collection = React.createClass({
 		};
 
 		return JSON.stringify(htmlMarkup);
-	},
+	}
 
-	getListOfTweetIds: function(){
+	getListOfTweetIds(){
 		return Object.keys(this.props.tweets);
-	},
+	}
 
-	getNumberOfTweetsInCollection: function(){
+	getNumberOfTweetsInCollection(){
 		return this.getListOfTweetIds().length;
-	},
+	}
 
-	render: function(){
+	render(){
 		var numberOfTweetsInCollection = this.getNumberOfTweetsInCollection();
 
 		if(numberOfTweetsInCollection > 0){
@@ -53,17 +53,7 @@ var Collection = React.createClass({
 			<Header text="Your collection is empty" />
 		);
 	}
-});
 
-module.exports = Collection;
-
-/*
-class Collection extends React.component{
-	
-	render(){
-		return <div className="aa">aaa</div>;
-	}
 }
 
 export default Collection;
-*/

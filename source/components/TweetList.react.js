@@ -1,5 +1,5 @@
-var React = require('react');
-var Tweet = require('./Tweet.react');
+import React from 'react';
+import Tweet from './Tweet.react';
 
 var listStyle = {
 	padding: '0px'
@@ -10,12 +10,12 @@ var listItemStyle = {
 	listStyle: 'none'
 }
 
-var TweetList = React.createClass({
-	getListOfTweetIds: function(){
+class TweetList extends React.Component{
+	getListOfTweetIds(){
 		return Object.keys(this.props.tweets);
-	},
+	}
 
-	getTweetElement: function(tweetId){
+	getTweetElement(tweetId){
 		var tweet = this.props.tweets[tweetId];
 		var handleRemoveTweetFromCollection = this.props.onRemoveTweetFromCollection;
 		var tweetElement;
@@ -35,9 +35,9 @@ var TweetList = React.createClass({
 				{tweetElement}
 			</li>
 		);
-	},
+	}
 
-	render: function(){
+	render(){
 		var tweetElements = this.getListOfTweetIds().map(this.getTweetElement);
 
 		return(
@@ -46,6 +46,8 @@ var TweetList = React.createClass({
 			</ul>
 		);
 	}
-});
 
-module.exports = TweetList;
+}
+
+
+export default TweetList;

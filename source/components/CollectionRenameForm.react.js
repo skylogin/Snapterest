@@ -1,48 +1,50 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var Header = require('./Header.react');
-var Button = require('./Button.react');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Header from './Header.react';
+import Button from './Button.react';
 
 var inputstyle = {
 	marginRight: '5px'
 };
 
-var CollectionRenameFrom = React.createClass({
-	getInitialState: function(){
-		return{
-			inputValue: this.props.name
-		};
-	},
+class CollectionRenameFrom extends React.Component{
+	constructor(){
+		super();
 
-	setInputValue: function(inputValue){
+		this.state = {
+			inputValue: this.props.name
+		}
+	}
+
+	setInputValue(inputValue){
 		this.setState({
 			inputValue: inputValue
 		});
-	},
+	}
 
-	handleInputValueChange: function(event){
+	handleInputValueChange(event){
 		var inputValue = event.target.value;
 		this.setInputValue(inputValue);
-	},
+	}
 
-	handleFormSubmit: function(event){
+	handleFormSubmit(event){
 		event.preventDefault();
 		var collectionName = this.state.inputValue;
 		this.props.onChangeCollectionName(collectionName);
-	},
+	}
 
-	handleFormCancel: function(event){
+	handleFormCancel(event){
 		event.preventDefault();
 		var collectionName = this.props.name;
 		this.setInputValue(collectionName);
 		this.props.onCancelCollectionNameChange();
-	},
+	}
 
-	componentDidMount: function(){
+	componentDidMount(){
 		this.refs.collectionName.focus();
-	},
+	}
 
-	render: function(){
+	render(){
 		return(
 			<form className="form-inline" onSubmit={this.handleSubmit}>
 				<Header text="Collection name:" />
@@ -60,6 +62,6 @@ var CollectionRenameFrom = React.createClass({
 			</form>
 		);
 	}
-});
+}
 
-module.exports = CollectionRenameFrom;
+export default CollectionRenameFrom;
